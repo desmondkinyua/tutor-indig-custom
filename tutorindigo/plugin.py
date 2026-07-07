@@ -24,7 +24,7 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
     "defaults": {
         "VERSION": __version__,
         "WELCOME_MESSAGE": "The place for all your online learning",
-        "PRIMARY_COLOR": "#15376D",  # Indigo
+        "PRIMARY_COLOR": "#1E5F73",  # Custom brand color
         "ENABLE_DARK_TOGGLE": True,
         # Footer links are dictionaries with a "title" and "url"
         # To remove all links, run:
@@ -175,6 +175,15 @@ for mfe in indigo_styled_mfes:
                     RenderWidget: AddDarkTheme,
                 },
             },
+            {
+                op: PLUGIN_OPERATIONS.Insert,
+                widget: {
+                    id: 'indigo_brand_color_override',
+                    type: DIRECT_PLUGIN,
+                    priority: 3,
+                    RenderWidget: BrandColorOverride,
+                },
+            },
   """,
         ),
     )
@@ -283,6 +292,15 @@ PLUGIN_SLOTS.add_items(
                     type: DIRECT_PLUGIN,
                     priority: 2,
                     RenderWidget: AddDarkTheme,
+                },
+            },
+            {
+                op: PLUGIN_OPERATIONS.Insert,
+                widget: {
+                    id: 'indigo_brand_color_override',
+                    type: DIRECT_PLUGIN,
+                    priority: 3,
+                    RenderWidget: BrandColorOverride,
                 },
             },
         """,
