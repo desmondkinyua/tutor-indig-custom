@@ -16,11 +16,6 @@ const IndigoFooter = () => {
       defaultMessage: "Runs on Tutor",
       description: "alt text for the footer tutor logo",
     },
-    "footer.logo.altText": {
-      id: "footer.logo.altText",
-      defaultMessage: "Powered by Open edX",
-      description: "alt text for the footer logo.",
-    },
     "footer.copyright.text": {
       id: "footer.copyright.text",
       defaultMessage: `Copyrights ©${new Date().getFullYear()}. All Rights Reserved.`,
@@ -47,15 +42,6 @@ const IndigoFooter = () => {
                       messages["footer.tutorlogo.altText"]
                     )}
                     width="57"
-                  />
-                </a>
-              </li>
-              <li>
-                <a href="https://open.edx.org" rel="noreferrer" target="_blank">
-                  <img
-                    src={`${config.LMS_BASE_URL}/theming/asset/images/openedx-logo.png`}
-                    alt={intl.formatMessage(messages["footer.logo.altText"])}
-                    width="79"
                   />
                 </a>
               </li>
