@@ -19,17 +19,18 @@ if (config.pluginSlots && config.pluginSlots['logo_slot']) {
 }
 
 if (config.pluginSlots && config.pluginSlots['org.openedx.frontend.layout.footer.v1']) {
-  const footerPluginsToInsert =
-    config.pluginSlots['org.openedx.frontend.layout.footer.v1'].plugins.filter(plugin => plugin.op === 'insert');
+  const footerInsertPlugins =
+    config.pluginSlots['org.openedx.frontend.layout.footer.v1'].plugins.filter(plugin => plugin.op === 'insert' && plugin.widget?.id === 'indigo_footer');
 
-  if (footerPluginsToInsert.length > 2) {
-  config.pluginSlots['org.openedx.frontend.layout.footer.v1'].plugins =
-    config.pluginSlots['org.openedx.frontend.layout.footer.v1'].plugins.filter(plugin => {
-      if (plugin.op === 'insert') {
-        const widgetId = plugin.widget?.id;
-        return widgetId !== 'indigo_footer';
-      }
-      return true;
-    });
+  if (footerInsertPlugins.length > 1) {
+    let kept = false;
+    config.pluginSlots['org.openedx.frontend.layout.footer.v1'].plugins =
+      config.pluginSlots['org.openedx.frontend.layout.footer.v1'].plugins.filter(plugin => {
+        if (plugin.op === 'insert' && plugin.widget?.id === 'indigo_footer') {
+          if (kept) return false;
+          kept = true;
+        }
+        return true;
+      });
   }
 }
